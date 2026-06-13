@@ -9,14 +9,14 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10" />
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-80"
         >
+          <source src="/video_car_2.mp4" type="video/mp4" media="(max-width: 640px)" />
           <source src="/video_car.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
