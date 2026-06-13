@@ -16,8 +16,7 @@ export default function Hero() {
           playsInline
           className="w-full h-full object-cover opacity-80"
         >
-          <source src="/video_car_2.mp4" type="video/mp4" media="(max-width: 640px)" />
-          <source src="/video_car.mp4" type="video/mp4" />
+          <source src="/video_car_2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
