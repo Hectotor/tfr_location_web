@@ -33,7 +33,7 @@ export default function PourquoiNous() {
 
   return (
     <section id="services" className="py-20 relative">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -43,7 +43,7 @@ export default function PourquoiNous() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Pourquoi nous <span className="text-gradient">choisir</span>
+            Pourquoi nous <span className="text-gradient" style={{background: '#095DEA', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>choisir</span>
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Quatre raisons qui font de TFR LOCATION le choix idéal pour vos besoins en location de véhicules.
@@ -70,19 +70,20 @@ export default function PourquoiNous() {
               }}
               className="text-center group"
             >
-              <div className="glass-effect rounded-2xl p-8 h-full border border-white/10 hover:border-[#F5A623]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[#F5A623]/20">
+              <div className="glass-effect rounded-2xl p-8 h-full border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20">
                 {/* Icon */}
                 <motion.div
                   initial={{ rotate: 0 }}
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="w-20 h-20 bg-gradient-to-r from-gray-300 to-gray-400 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+                  className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+                  style={{background: '#095DEA'}}
                 >
-                  <reason.icon className="w-10 h-10 text-black" />
+                  <reason.icon className="w-10 h-10 text-white" />
                 </motion.div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-gray-300 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
                   {reason.title}
                 </h3>
                 <p className="text-white/70 leading-relaxed">

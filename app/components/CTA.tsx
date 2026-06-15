@@ -7,10 +7,10 @@ export default function CTA() {
   return (
     <section className="py-20 relative">
       {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-[#F5A623]/20" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#F5A623]/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-blue-500/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent" />
       
-      <div className="relative z-10 container mx-auto px-4">
+      <div className="relative z-10 w-full px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ export default function CTA() {
             className="text-4xl lg:text-6xl font-bold text-white mb-6"
           >
             Besoin d'un véhicule
-            <span className="block text-gradient">dès aujourd'hui ?</span>
+            <span className="block text-gradient" style={{background: '#095DEA', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>dès aujourd'hui ?</span>
           </motion.h2>
 
           <motion.p
@@ -51,7 +51,8 @@ export default function CTA() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-gray-300 to-gray-400 text-black px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 group"
+              className="text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 flex items-center justify-center space-x-2 group"
+              style={{background: '#095DEA'}}
             >
               <span>Réserver maintenant</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

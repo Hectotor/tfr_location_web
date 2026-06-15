@@ -34,7 +34,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-black/50 backdrop-blur-lg border-t border-white/10">
-      <div className="container mx-auto px-4 py-16">
+      <div className="w-full py-16 px-4 lg:px-8">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {/* Logo and Info */}
           <motion.div
@@ -45,8 +45,8 @@ export default function Footer() {
             className="space-y-6"
           >
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-[#F5A623] to-[#FF8C00] rounded-lg flex items-center justify-center">
-                <span className="text-black font-bold text-xl">TFR</span>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background: '#095DEA'}}>
+                <span className="text-white font-bold text-xl">TFR</span>
               </div>
               <span className="text-white font-bold text-xl">LOCATION</span>
             </div>

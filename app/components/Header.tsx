@@ -34,7 +34,7 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div
@@ -42,8 +42,8 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-gray-300 to-gray-400 rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-xl">TFR</span>
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background: '#095DEA'}}>
+              <span className="text-white font-bold text-xl">TFR</span>
             </div>
             <span className="text-white font-bold text-xl">LOCATION</span>
           </motion.div>
@@ -79,7 +79,8 @@ export default function Header() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-gray-300 to-gray-400 text-black px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+              className="text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+              style={{background: '#095DEA'}}
             >
               Réserver
             </motion.button>
@@ -121,7 +122,7 @@ export default function Header() {
                   <Mail className="w-4 h-4 text-gray-300" />
                   <span>contact@tfrlocation.fr</span>
                 </div>
-                <button className="w-full bg-gradient-to-r from-gray-300 to-gray-400 text-black px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold">
+                <button className="w-full text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300" style={{background: '#095DEA'}}>
                   Réserver
                 </button>
               </div>

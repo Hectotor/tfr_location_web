@@ -6,7 +6,7 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 export default function Localisation() {
   return (
     <section id="localisation" className="py-20 relative">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 lg:px-8">
         {/* Video Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,7 +37,7 @@ export default function Localisation() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Nous trouver à <span className="text-gradient">Rennes</span>
+            Nous trouver à <span className="text-gradient" style={{background: '#095DEA', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>Rennes</span>
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
             TFR LOCATION est fièrement implantée au cœur de Rennes, prête à vous servir pour tous vos besoins de location.
@@ -72,7 +72,8 @@ export default function Localisation() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="absolute top-4 left-4 bg-gradient-to-r from-gray-300 to-gray-400 text-black px-4 py-2 rounded-lg font-bold"
+              className="absolute top-4 left-4 text-white px-4 py-2 rounded-lg font-bold"
+              style={{background: '#095DEA'}}
             >
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
