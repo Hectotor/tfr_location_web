@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Car, Users, Fuel, Settings, ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Flotte() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
   const vehicles = [
     {
       category: 'Citadine',
@@ -70,6 +71,32 @@ export default function Flotte() {
     setCurrentIndex(index)
   }
 
+  // Detect scroll on mobile to update currentIndex using IntersectionObserver
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (!scrollContainer) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0')
+            setCurrentIndex(index)
+          }
+        })
+      },
+      {
+        root: scrollContainer,
+        threshold: 0.5
+      }
+    )
+
+    const cards = scrollContainer.querySelectorAll('[data-index]')
+    cards.forEach((card) => observer.observe(card))
+
+    return () => observer.disconnect()
+  }, [vehicles.length])
+
   return (
     <section id="fleet" className="py-20 relative">
       <div className="w-full px-4 lg:px-8">
@@ -115,23 +142,23 @@ export default function Flotte() {
 
         {/* Vehicles Carousel Centré - Vrai carrousel */}
         <div className="relative w-full">
-          {/* Navigation Buttons */}
+          {/* Navigation Buttons - Desktop only */}
           <button
             onClick={prevVehicle}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-blue-500/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-blue-500/30 transition-all duration-300 border border-white/10 hover:scale-110"
+            className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-blue-500/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-blue-500/30 transition-all duration-300 border border-white/10 hover:scale-110"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
           
           <button
             onClick={nextVehicle}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-blue-500/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-blue-500/30 transition-all duration-300 border border-white/10 hover:scale-110"
+            className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-blue-500/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-blue-500/30 transition-all duration-300 border border-white/10 hover:scale-110"
           >
             <ChevronRight className="w-8 h-8" />
           </button>
 
-          {/* Three Vehicle Display - Précédent gauche, actuel centre, suivant droite */}
-          <div className="flex items-center justify-center gap-4 lg:gap-8 py-4 overflow-hidden">
+          {/* Three Vehicle Display - Précédent gauche, actuel centre, suivant droite (Desktop) */}
+          <div className="hidden lg:flex items-center justify-center gap-8 py-4 overflow-hidden">
               {/* Véhicule précédent - Gauche, flouté */}
               {currentIndex > 0 && (
                 <motion.div
@@ -148,7 +175,7 @@ export default function Flotte() {
                     stiffness: 300,
                     damping: 30
                   }}
-                  className="glass-effect rounded-2xl overflow-hidden border border-white/20 relative cursor-pointer flex-shrink-0 w-full lg:w-[600px]"
+                  className="glass-effect rounded-2xl overflow-hidden border border-white/20 relative cursor-pointer flex-shrink-0 w-[600px]"
                   onClick={() => goToVehicle(currentIndex - 1)}
                 >
                     {/* Vehicle Image */}
@@ -216,7 +243,7 @@ export default function Flotte() {
                   stiffness: 300,
                   damping: 30
                 }}
-                className="glass-effect rounded-2xl overflow-hidden border border-blue-500 shadow-2xl shadow-blue-500/40 relative cursor-pointer flex-shrink-0 w-full lg:w-[600px]"
+                className="glass-effect rounded-2xl overflow-hidden border border-blue-500 shadow-2xl shadow-blue-500/40 relative cursor-pointer flex-shrink-0 w-[600px]"
               >
                     {/* Vehicle Image */}
                     <div className="relative h-64 overflow-hidden">
@@ -307,7 +334,7 @@ export default function Flotte() {
                     stiffness: 300,
                     damping: 30
                   }}
-                  className="glass-effect rounded-2xl overflow-hidden border border-white/20 relative cursor-pointer flex-shrink-0 w-full lg:w-[600px]"
+                  className="glass-effect rounded-2xl overflow-hidden border border-white/20 relative cursor-pointer flex-shrink-0 w-[600px]"
                   onClick={() => goToVehicle(currentIndex + 1)}
                 >
                     {/* Vehicle Image */}
@@ -357,15 +384,114 @@ export default function Flotte() {
               )}
           </div>
 
+          {/* Mobile: Single vehicle with horizontal scroll */}
+          <div 
+            ref={scrollContainerRef}
+            className="lg:hidden overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar"
+          >
+            <div className="flex gap-4 px-4">
+              {vehicles.map((vehicle, index) => (
+                <motion.div
+                  key={vehicle.name}
+                  data-index={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ 
+                    opacity: index === currentIndex ? 1 : 0.7,
+                    scale: index === currentIndex ? 1 : 0.95
+                  }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30
+                  }}
+                  className={`glass-effect rounded-2xl overflow-hidden border relative cursor-pointer flex-shrink-0 w-full snap-center ${
+                    index === currentIndex 
+                      ? 'border-blue-500 shadow-2xl shadow-blue-500/40' 
+                      : 'border-white/20'
+                  }`}
+                  onClick={() => goToVehicle(index)}
+                >
+                  {/* Vehicle Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={vehicle.image}
+                      alt={vehicle.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    
+                    <div className="absolute top-4 left-4">
+                      <span className="text-white px-3 py-1 rounded-full text-sm font-bold"
+                        style={{background: '#095DEA'}}>
+                        {vehicle.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Vehicle Info */}
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-white mb-3">{vehicle.name}</h3>
+                    
+                    {/* Specs */}
+                    <div className="flex items-center space-x-4 text-white/60 mb-4 text-sm">
+                      <div className="flex items-center space-x-1">
+                        <Users className="w-4 h-4" />
+                        <span>{vehicle.specs.seats} places</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Fuel className="w-4 h-4" />
+                        <span>{vehicle.specs.fuel}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Settings className="w-4 h-4" />
+                        <span>{vehicle.specs.transmission}</span>
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {vehicle.features.map((feature) => (
+                        <span
+                          key={feature}
+                          className="bg-white/10 text-white/80 text-xs px-2 py-1 rounded-full"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Price and CTA */}
+                    <div className="flex flex-col gap-3">
+                      <div className="flex items-baseline">
+                        <span className="text-3xl font-bold text-blue-400">{vehicle.price}</span>
+                        <span className="text-white/60 ml-2">€/jour</span>
+                      </div>
+                      <Link href="/reservation">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="text-white px-4 py-2 rounded-lg font-bold text-sm hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full"
+                          style={{background: '#095DEA'}}
+                        >
+                          Réserver maintenant
+                        </motion.button>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           {/* Dots Indicator */}
           <div className="flex justify-center space-x-2 mt-6">
             {vehicles.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToVehicle(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-blue-500 w-8' 
+                    ? 'bg-blue-500 scale-125' 
                     : 'bg-white/30 hover:bg-white/50'
                 }`}
               />

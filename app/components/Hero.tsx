@@ -29,6 +29,12 @@ export default function Hero() {
           muted
           playsInline
           className="w-full h-full object-cover"
+          style={{
+            objectFit: 'cover',
+            WebkitAppearance: 'none',
+            appearance: 'none'
+          }}
+          controls={false}
         >
           <source src="/video_car_2.mp4" type="video/mp4" />
           Your browser does not support the video tag.

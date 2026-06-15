@@ -37,6 +37,37 @@ body {
   max-width: 100% !important;
 }
 
+/* Hide video controls on mobile */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+/* Hide scrollbar for mobile carousel */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+  display: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  display: none;
+}
+
 .react-calendar__navigation {
   display: flex !important;
   height: 44px !important;
@@ -167,10 +198,10 @@ html {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #E8E8E8 0%, #C0C0C0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: #095DEA !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
 
 .accent-hover {
