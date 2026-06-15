@@ -32,13 +32,21 @@ export default function Hero() {
           style={{
             objectFit: 'cover',
             WebkitAppearance: 'none',
-            appearance: 'none'
+            appearance: 'none',
+            pointerEvents: 'none'
           }}
           controls={false}
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
         >
           <source src="/video_car_2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        {/* Transparent overlay to prevent interaction */}
+        <div 
+          className="absolute inset-0"
+          style={{ pointerEvents: 'none' }}
+        />
         <motion.div 
           className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
           initial={{ opacity: 0 }}
