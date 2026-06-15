@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Car, Users, Fuel, Settings, ChevronLeft, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Flotte() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -276,14 +277,16 @@ export default function Flotte() {
                           <span className="text-4xl font-bold text-blue-400">{vehicles[currentIndex].price}</span>
                           <span className="text-white/60 ml-2">€/jour</span>
                         </div>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full sm:w-auto"
-                          style={{background: '#095DEA'}}
-                        >
-                          Réserver maintenant
-                        </motion.button>
+                        <Link href="/reservation">
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full sm:w-auto"
+                            style={{background: '#095DEA'}}
+                          >
+                            Réserver maintenant
+                          </motion.button>
+                        </Link>
                       </div>
                     </div>
                   </motion.div>

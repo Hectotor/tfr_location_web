@@ -8,6 +8,7 @@ import Localisation from './components/Localisation'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import ScrollBar from './components/ScrollBar'
+import WhatsAppButton from './components/WhatsAppButton'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Localisation />
       <CTA />
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }
