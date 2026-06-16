@@ -50,6 +50,16 @@ video::-webkit-media-controls-panel {
   display: none !important;
 }
 
+/* Hide the big central play button overlay on iOS Safari */
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+
 /* Hide scrollbar for mobile carousel */
 .hide-scrollbar {
   -ms-overflow-style: none;
