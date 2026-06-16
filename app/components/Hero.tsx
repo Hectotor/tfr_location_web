@@ -29,10 +29,8 @@ export default function Hero() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          style={{ objectFit: 'cover' }}
         >
           <source src="/video_car_2.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
         <motion.div 
           className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
