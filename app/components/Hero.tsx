@@ -2,8 +2,10 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, CheckCircle, Star } from 'lucide-react'
+import { useRef, useEffect } from 'react'
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 300], [0, -50])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
@@ -12,6 +14,14 @@ export default function Hero() {
   // Animation premium pour le début du scroll
   const videoScale = useTransform(scrollY, [0, 100], [1.1, 1])
   const videoOpacity = useTransform(scrollY, [0, 100], [0.6, 0.8])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      video.muted = true
+      video.play().catch(() => {})
+    }
+  }, [])
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -24,10 +34,12 @@ export default function Hero() {
         }}
       >
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
         >
           <source src="/video_car_2.mp4" type="video/mp4" />
