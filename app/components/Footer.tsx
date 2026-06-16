@@ -34,7 +34,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-black/50 backdrop-blur-lg border-t border-white/10">
-      <div className="w-full py-16 px-4 lg:px-8">
+      <div className="w-full py-20 px-4 lg:px-8">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {/* Logo and Info */}
           <motion.div
