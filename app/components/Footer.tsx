@@ -14,12 +14,10 @@ export default function Footer() {
     'Entreprise': [
       { name: 'À propos', href: '#about' },
       { name: 'Notre flotte', href: '#fleet' },
-      { name: 'Témoignages', href: '#testimonials' },
-      { name: 'Carrières', href: '#careers' }
+      { name: 'Témoignages', href: '#testimonials' }
     ],
     'Support': [
       { name: 'Contact', href: '#contact' },
-      { name: 'FAQ', href: '#faq' },
       { name: 'Conditions générales', href: '#terms' },
       { name: 'Politique de confidentialité', href: '#privacy' }
     ]
@@ -60,7 +58,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-white/80">
                 <Phone className="w-5 h-5 text-gray-300" />
-                <span>01 23 45 67 89</span>
+                <span>06 02 79 77 98</span>
               </div>
               <div className="flex items-center space-x-3 text-white/80">
                 <Mail className="w-5 h-5 text-gray-300" />

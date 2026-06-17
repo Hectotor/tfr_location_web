@@ -77,7 +77,7 @@ export default function CTA() {
           >
             <div className="flex items-center space-x-3">
               <Phone className="w-5 h-5 text-gray-300" />
-              <span className="text-lg">01 23 45 67 89</span>
+              <span className="text-lg">06 02 79 77 98</span>
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="w-5 h-5 text-gray-300" />

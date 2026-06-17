@@ -69,7 +69,7 @@ export default function Header() {
             <div className="flex items-center space-x-4 text-white/80 text-sm">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-gray-300" />
-                <span>01 23 45 67 89</span>
+                <span>06 02 79 77 98</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-gray-300" />
@@ -116,7 +116,7 @@ export default function Header() {
               <div className="pt-4 border-t border-white/10 space-y-3">
                 <div className="flex items-center space-x-2 text-white/80 text-sm">
                   <Phone className="w-4 h-4 text-gray-300" />
-                  <span>01 23 45 67 89</span>
+                  <span>06 02 79 77 98</span>
                 </div>
                 <div className="flex items-center space-x-2 text-white/80 text-sm">
                   <Mail className="w-4 h-4 text-gray-300" />

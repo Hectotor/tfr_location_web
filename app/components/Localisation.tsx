@@ -108,7 +108,7 @@ export default function Localisation() {
               <div className="flex items-center space-x-4">
                 <Phone className="w-6 h-6 text-gray-300 flex-shrink-0" />
                 <div>
-                  <div className="text-white font-semibold">01 23 45 67 89</div>
+                  <div className="text-white font-semibold">06 02 79 77 98</div>
                   <div className="text-white/60 text-sm">Disponible 7j/7</div>
                 </div>
               </div>

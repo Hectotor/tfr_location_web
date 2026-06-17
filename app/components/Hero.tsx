@@ -133,47 +133,7 @@ export default function Hero() {
               type: "spring",
               stiffness: 120
             }}
-            className="flex flex-col sm:flex-row gap-4 items-center justify-center sm:justify-center"
           >
-            <motion.button
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(9, 93, 234, 0.4)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.4, duration: 0.8 }}
-              className="text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center space-x-2 group max-w-xs sm:max-w-none"
-              style={{background: '#095DEA'}}
-            >
-              <motion.span
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Réserver un véhicule
-              </motion.span>
-              <motion.div
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.div>
-            </motion.button>
-
-            <motion.button
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.15)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.6, duration: 0.8 }}
-              className="glass-effect text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 max-w-xs sm:max-w-none border border-white/20"
-            >
-              Nous contacter
-            </motion.button>
           </motion.div>
 
         </motion.div>
