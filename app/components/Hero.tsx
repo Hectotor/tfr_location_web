@@ -2,10 +2,11 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, CheckCircle, Star } from 'lucide-react'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [isVideoReady, setIsVideoReady] = useState(false)
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 300], [0, -50])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
@@ -19,7 +20,19 @@ export default function Hero() {
     const video = videoRef.current
     if (video) {
       video.muted = true
-      video.play().catch(() => {})
+      
+      // Cache la vidéo pendant le chargement
+      const handleCanPlay = () => {
+        setIsVideoReady(true)
+        video.play().catch(() => {})
+      }
+      
+      video.addEventListener('canplay', handleCanPlay)
+      video.load() // Force le chargement
+      
+      return () => {
+        video.removeEventListener('canplay', handleCanPlay)
+      }
     }
   }, [])
 
@@ -40,10 +53,15 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
         >
           <source src="/video_car_2.mp4" type="video/mp4" />
         </video>
+        
+        {/* Overlay noir pendant le chargement pour cacher le bouton play */}
+        {!isVideoReady && (
+          <div className="absolute inset-0 bg-black z-10" />
+        )}
         <motion.div 
           className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
           initial={{ opacity: 0 }}
